@@ -2,8 +2,8 @@
 class CreateSimpleHashtagHashtags < ActiveRecord::Migration
   def change
     create_table :simple_hashtag_hashtags do |t|
-      t.string :name,             :index => true
-
+      t.string :name, index: true
+      t.integer :hashtaggins_count, index: true
       t.timestamps
     end
   end
