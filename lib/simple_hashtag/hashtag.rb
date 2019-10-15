@@ -5,6 +5,14 @@ module SimpleHashtag
     has_many :hashtaggings
 
     validates :name, uniqueness: true
+    
+    include PgSearch
+    pg_search_scope :search_by_ht,
+                    against: [:name],
+                    using: {
+                      tsearch: { prefix: true }
+                    },
+                    ignoring: :accents
 
     # TODO Beef up the regex (ie.:what if content is HTML)
     # this is how Twitter does it:
